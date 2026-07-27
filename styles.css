@@ -1,13 +1,12 @@
 :root {
-  --paper: #f5efe3;
-  --ink: #173f2c;
-  --muted: #6d665b;
-  --line: rgba(23, 63, 44, 0.2);
+  --paper: #f3ecdf;
+  --paper-light: #fbf7ef;
+  --ink: #153d2a;
+  --muted: #70695e;
+  --line: rgba(21, 61, 42, .22);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -17,7 +16,17 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.52), transparent 28rem),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.35), transparent 24rem),
+    repeating-linear-gradient(
+      7deg,
+      rgba(84,69,46,.018) 0,
+      rgba(84,69,46,.018) 1px,
+      transparent 1px,
+      transparent 7px
+    ),
+    var(--paper);
   font-family: Georgia, "Times New Roman", serif;
 }
 
@@ -26,77 +35,74 @@ body {
   display: grid;
   place-items: center;
   position: relative;
-  overflow: hidden;
-  background: var(--paper);
+  padding: clamp(1rem, 4vw, 3rem);
 }
 
-.hero-image {
+.logo {
   display: block;
-  width: 100%;
-  height: 100svh;
+  width: min(78vw, 860px);
+  max-height: 82svh;
   object-fit: contain;
-  object-position: center;
+  filter: drop-shadow(0 18px 28px rgba(24, 43, 29, .12));
 }
 
 .scroll-cue {
   position: absolute;
-  bottom: 1.25rem;
+  bottom: 1.1rem;
   left: 50%;
   transform: translateX(-50%);
   color: var(--ink);
   text-decoration: none;
-  font: 700 1.5rem/1 Arial, sans-serif;
-  opacity: 0.7;
+  font: 700 1.45rem/1 Arial, sans-serif;
+  opacity: .72;
   animation: float 1.8s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, 7px); }
+  0%,100% { transform: translate(-50%,0); }
+  50% { transform: translate(-50%,7px); }
 }
 
-.field-note {
+.story {
   width: min(860px, calc(100% - 2rem));
   margin: 0 auto;
   padding: clamp(4rem, 8vw, 7rem) 0;
 }
 
 .eyebrow {
-  margin: 0 0 0.75rem;
-  font: 700 0.75rem/1.2 Arial, sans-serif;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  margin: 0 0 .8rem;
   color: var(--muted);
+  font: 700 .75rem/1.2 Arial, sans-serif;
+  letter-spacing: .18em;
+  text-transform: uppercase;
 }
 
 h1 {
   margin: 0;
-  font-size: clamp(2.5rem, 7vw, 5.25rem);
-  line-height: 0.95;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.7rem, 7vw, 5.2rem);
+  line-height: .96;
+  letter-spacing: -.035em;
 }
 
-.scientific-name {
+.scientific {
   margin: 1rem 0 0;
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
 }
 
 .subtitle {
-  margin: 0.4rem 0 2.5rem;
-  font: 600 clamp(1rem, 2.3vw, 1.25rem)/1.4 Arial, sans-serif;
+  margin: .4rem 0 2.4rem;
   color: var(--muted);
+  font: 600 clamp(1rem, 2.3vw, 1.25rem)/1.4 Arial, sans-serif;
 }
 
-.copy {
+.body-copy {
   display: grid;
-  gap: 1.25rem;
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  gap: 1.3rem;
+  font-size: clamp(1.05rem, 2vw, 1.22rem);
   line-height: 1.75;
 }
 
-.copy p {
-  margin: 0;
-}
+.body-copy p { margin: 0; }
 
 .facts {
   display: grid;
@@ -110,9 +116,7 @@ h1 {
   border-bottom: 1px solid var(--line);
 }
 
-.facts div:nth-child(odd) {
-  padding-right: 1.5rem;
-}
+.facts div:nth-child(odd) { padding-right: 1.5rem; }
 
 .facts div:nth-child(even) {
   padding-left: 1.5rem;
@@ -120,11 +124,11 @@ h1 {
 }
 
 dt {
-  margin-bottom: 0.35rem;
-  font: 700 0.72rem/1.2 Arial, sans-serif;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  margin-bottom: .35rem;
   color: var(--muted);
+  font: 700 .72rem/1.2 Arial, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
 dd {
@@ -135,20 +139,20 @@ dd {
 
 footer {
   padding: 0 1rem 1.5rem;
+  color: rgba(21,61,42,.52);
   text-align: center;
-  font: 0.72rem/1.4 Arial, sans-serif;
-  color: rgba(23, 63, 44, 0.55);
+  font: .72rem/1.4 Arial, sans-serif;
 }
 
 @media (max-width: 640px) {
-  .hero-image {
-    width: 112%;
-    max-width: none;
+  .hero { padding: 1rem; }
+
+  .logo {
+    width: min(96vw, 680px);
+    max-height: 78svh;
   }
 
-  .facts {
-    grid-template-columns: 1fr;
-  }
+  .facts { grid-template-columns: 1fr; }
 
   .facts div:nth-child(odd),
   .facts div:nth-child(even) {
@@ -158,11 +162,6 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .scroll-cue {
-    animation: none;
-  }
+  html { scroll-behavior: auto; }
+  .scroll-cue { animation: none; }
 }
