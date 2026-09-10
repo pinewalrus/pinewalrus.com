@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
   --paper: #ffffff;
-  --ink: #000000;
+  --ink: #333333;
   --line: rgba(0, 0, 0, 0.22);
 }
 
